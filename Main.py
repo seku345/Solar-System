@@ -6,7 +6,10 @@ from win32api import GetSystemMetrics
 # Класс планет
 class Planet(sprite.Sprite):
 
-    ...
+    def __init__(self):
+        super().__init__()
+
+        
 
 # Главная функция
 def main():
@@ -38,6 +41,8 @@ def main():
             # Закрытие окна
             if e.type == KEYDOWN and e.key == K_ESCAPE:
                 run = False
+
+    quit()
 
 # Запуск
 if __name__ == '__main__':
