@@ -6,8 +6,29 @@ from win32api import GetSystemMetrics
 # Класс планет
 class Planet(sprite.Sprite):
 
-    def __init__(self):
+    # Константы
+    AU = 149.6e6 * 1000 # Астрономическая единица
+    G =  6.7428e-11 # Гравитационная постоянная
+    SCALE = 250 / AU # 1AU = 100 px
+    TIMESTEP = 3600 * 24 # Шаг времени в: 1 секунда равна 1 суткам
+
+
+    def __init__(self, planet_image, planet_x, planet_y, radius, mass, sun):
         super().__init__()
+
+        self.image = transform_scale(image.load(planet_image), (self.radius, self.radius))
+        self.planet_x = planet_x
+        self.planet_y = planet_y
+        self.radius = radius
+        self.mass = mass
+
+        self.x_vel = 0
+        self.y_vel = 0
+
+        self.distance_to_sun = 0
+        self.orbit = []
+
+
 
         
 
