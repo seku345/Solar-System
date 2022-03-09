@@ -12,13 +12,13 @@ class Planet(sprite.Sprite):
     SCALE = 250 / AU # 1AU = 100 px
     TIMESTEP = 3600 * 24 # Шаг времени в: 1 секунда равна 1 суткам
 
-
-    def __init__(self, planet_image, planet_x, planet_y, radius, mass, sun):
+    # Инициализация
+    def __init__(self, planet_image, x, y, radius, mass, sun):
         super().__init__()
 
         self.image = transform_scale(image.load(planet_image), (self.radius, self.radius))
-        self.planet_x = planet_x
-        self.planet_y = planet_y
+        self.x = x
+        self.y = y
         self.radius = radius
         self.mass = mass
 
@@ -28,7 +28,13 @@ class Planet(sprite.Sprite):
         self.distance_to_sun = 0
         self.orbit = []
 
+    # Отрисовка
+    def update(self, win):
+        global H, V
+        x = self.x * self.SCALE + H/2
+        y = self.y * self.SCALE + V/2
 
+        draw.circle(win, (255, 255, 255), (x, y), self.radius)
 
         
 
@@ -44,6 +50,9 @@ def main():
     background = transform.scale(image.load('Sprites/Background.jpg'), (H, V))
 
     clock = time.Clock()
+
+    # Создание планет
+    sun = Planet(0, 0, 30, ...)
 
     # Основной цикл
     run = True
