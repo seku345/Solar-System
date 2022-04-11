@@ -1,5 +1,6 @@
+from math import sqrt, atan2, cos, sin
+
 from pygame import *
-from math import *
 
 from Window import H, V, window
 
