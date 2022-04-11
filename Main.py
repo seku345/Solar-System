@@ -1,42 +1,11 @@
 # Библиотеки
-from pygame import *
 from math import *
+
+from pygame import *
 from win32api import GetSystemMetrics
 
 # Класс планет
-class Planet(sprite.Sprite):
-
-    # Константы
-    AU = 149.6e6 * 1000 # Астрономическая единица
-    G =  6.7428e-11 # Гравитационная постоянная
-    SCALE = 250 / AU # 1AU = 100 px
-    TIMESTEP = 3600 * 24 # Шаг времени в: 1 секунда равна 1 суткам
-
-    # Инициализация
-    def __init__(self, x, y, radius, planet_image, mass, sun= False):
-        super().__init__()
-
-        self.image = transform.scale(image.load(planet_image), (self.radius, self.radius))
-        self.x = x
-        self.y = y
-        self.radius = radius
-        self.mass = mass
-
-        self.x_vel = 0
-        self.y_vel = 0
-
-        self.distance_to_sun = 0
-        self.orbit = []
-
-    # Отрисовка
-    def update(self, win):
-        global H, V
-        x = self.x * self.SCALE + H/2
-        y = self.y * self.SCALE + V/2
-
-        draw.circle(win, (255, 255, 255), (x, y), self.radius)
-
-        
+from Planet_class import Planet
 
 # Главная функция
 def main():
@@ -66,20 +35,22 @@ def main():
     mars = Planet(-1.524 * Planet.AU, 0, 12, 'Sprites/Mars.png', 6.39 * 10**23)
     mars.y_vel = 24.077 * 1000
     
-    jupiter = Planet(5.204 * Planet.AU, 0, 14, 'Sprites/Jupiter.png', 4.8685 * 10**24)
-    jupiter.y_vel = -35.02 * 1000
+    jupiter = Planet(5.204 * Planet.AU, 0, 14, 'Sprites/Jupiter.png', 1.8986 * 10**27)
+    jupiter.y_vel = 13.1 * 1000
 
-    saturn = Planet(9.54 * Planet.AU, 0, 14, 'Sprites/Saturn.png', 4.8685 * 10**24)
-    saturn.y_vel = -35.02 * 1000
+    saturn = Planet(9.54 * Planet.AU, 0, 14, 'Sprites/Saturn.png', 5.68 * 10**26)
+    saturn.y_vel = 9.68 * 1000
     
-    uranus = Planet(18.4 * Planet.AU, 0, 14, 'Sprites/Uranus.png', 4.8685 * 10**24)
-    uranus.y_vel = -35.02 * 1000
+    uranus = Planet(18.4 * Planet.AU, 0, 14, 'Sprites/Uranus.png', 8.68 * 10**25)
+    uranus.y_vel = -6.8 * 1000
 
-    neptune = Planet(30 * Planet.AU, 0, 14, 'Sprites/Neptune.png', 4.8685 * 10**24)
-    neptune .y_vel = -35.02 * 1000
+    neptune = Planet(30 * Planet.AU, 0, 14, 'Sprites/Neptune.png', 1.02 * 10**26)
+    neptune .y_vel = -5.44 * 1000
 
-    pluto = Planet(39.53 * Planet.AU, 0, 14, 'Sprites/Pluto.png', 4.8685 * 10**24)
-    pluto.y_vel = -35.02 * 1000
+    pluto = Planet(39.53 * Planet.AU, 0, 14, 'Sprites/Pluto.png', 1.305 * 10**22)
+    pluto.y_vel = 4.74 * 1000
+    
+    planets = [sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto]
     
     # Основной цикл
     run = True
