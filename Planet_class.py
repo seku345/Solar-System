@@ -15,7 +15,7 @@ class Planet(sprite.Sprite):
     def __init__(self, x, y, radius, planet_image, mass, sun= False):
         super().__init__()
 
-        self.radius = radius
+        self.radius = int(radius / 1_000_000 * self.SCALE)
         self.image = transform.scale(image.load(planet_image), (self.radius, self.radius))
         self.x = x
         self.y = y
