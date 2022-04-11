@@ -1,6 +1,8 @@
 from pygame import *
 from math import *
 
+from Window import H, V, window
+
 class Planet(sprite.Sprite):
 
     # Константы
@@ -26,10 +28,10 @@ class Planet(sprite.Sprite):
         self.orbit = []
 
     # Отрисовка
-    def update(self, win):
+    def draw(self, win):
         global H, V
-        x = self.x * self.SCALE + H/2
-        y = self.y * self.SCALE + V/2
+        x = self.x * self.SCALE + H/2 - self.radius/2
+        y = self.y * self.SCALE + V/2 - self.radius/2
 
-        draw.circle(win, (255, 255, 255), (x, y), self.radius)
-        window.blit(self.image, (self.x, self.y))
+        # draw.circle(win, (255, 255, 255), (x, y), self.radius)
+        window.blit(self.image, (x, y))

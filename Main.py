@@ -2,28 +2,22 @@
 from math import *
 
 from pygame import *
-from win32api import GetSystemMetrics
+
+# Параметры окна
+from Window import window, background
 
 # Класс планет
 from Planet_class import Planet
 
 # Главная функция
 def main():
-    
-    # Настройка экрана
-    H = GetSystemMetrics(0)
-    V = GetSystemMetrics(1)
-
-    window = display.set_mode((0, 0), FULLSCREEN)
-    display.set_caption('Planet Simulation')
-    background = transform.scale(image.load('Sprites/Background.jpg'), (H, V))
 
     clock = time.Clock()
 
     # Создание планет
-    sun = Planet(0, 0, 30, 'Sprites/Sun.png', 1.98892 * 10**30, True)
+    sun = Planet(0, 0, 150, 'Sprites/Sun.png', 1.98892 * 10**30, True)
 
-    mercury = Planet(0.387 * Planet.AU, 0, 8, 'Sprites/Mercury.png', 3.30 * 10**23)
+    mercury = Planet(0.387 * Planet.AU, 0, 50, 'Sprites/Mercury.png', 3.30 * 10**23)
     mercury.y_vel = -47.4 * 1000
 
     venus = Planet(0.723 * Planet.AU, 0, 14, 'Sprites/Venus.png', 4.8685 * 10**24)
@@ -69,6 +63,10 @@ def main():
             # Закрытие окна
             if e.type == KEYDOWN and e.key == K_ESCAPE:
                 run = False
+        
+        # Отрисовка
+        for planet in planets:
+            planet.draw(window)
 
     quit()
 
