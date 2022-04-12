@@ -9,14 +9,16 @@ class Planet(sprite.Sprite):
     # Константы
     AU = 149.6e6 * 1000 # Астрономическая единица
     G =  6.7428e-11 # Гравитационная постоянная
-    SCALE = 250 / AU # 1AU = 100 px
+    SCALE_K = 250
+    SCALE = SCALE_K / AU # 1AU = 100 px
     TIMESTEP = 3600 * 24 # Шаг времени в: 1 секунда равна 1 суткам
 
     # Инициализация
     def __init__(self, x, y, radius, planet_image, mass, sun= False):
         super().__init__()
 
-        self.radius = int(radius / 1_000_000 * self.SCALE)
+        self.planet_image = planet_image
+        self.radius = int(radius * self.SCALE_K)
         self.image = transform.scale(image.load(planet_image), (self.radius, self.radius))
         self.x = x
         self.y = y
@@ -29,10 +31,11 @@ class Planet(sprite.Sprite):
         self.orbit = []
 
     # Отрисовка
-    def draw(self, win):
+    def draw(self):
         global H, V
         x = self.x * self.SCALE + H/2 - self.radius/2
         y = self.y * self.SCALE + V/2 - self.radius/2
+        
+        self.image = transform.scale(image.load(self.planet_image), (self.radius, self.radius))
 
-        # draw.circle(win, (255, 255, 255), (x, y), self.radius)
         window.blit(self.image, (x, y))

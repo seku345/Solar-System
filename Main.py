@@ -15,36 +15,40 @@ def main():
     clock = time.Clock()
 
     # Создание планет
-    sun = Planet(0, 0, 696000 * 10**3, 'Sprites/Sun.png', 1.98892 * 10**30, True)
+    sun = Planet(0, 0, 1, 'Sprites/Sun.png', 1.98892 * 10**30, True)
 
-    mercury = Planet(0.387 * Planet.AU, 0, 2440 * 10**3, 'Sprites/Mercury.png', 3.30 * 10**23)
+    mercury = Planet(0.387 * Planet.AU, 0, 0.38, 'Sprites/Mercury.png', 3.30 * 10**23)
     mercury.y_vel = -47.4 * 1000
 
-    venus = Planet(0.723 * Planet.AU, 0, 6050 * 10**3, 'Sprites/Venus.png', 4.8685 * 10**24)
+    venus = Planet(0.723 * Planet.AU, 0, 0.95, 'Sprites/Venus.png', 4.8685 * 10**24)
     venus.y_vel = -35.02 * 1000
 
-    earth = Planet(-1 * Planet.AU, 0, 6370 * 10**3, 'Sprites/Earth.png', 5.9742 * 10**24)
+    earth = Planet(-1 * Planet.AU, 0, 1, 'Sprites/Earth.png', 5.9742 * 10**24)
     earth.y_vel = 29.783 * 1000
     
-    mars = Planet(-1.524 * Planet.AU, 0, 3390 * 10**3, 'Sprites/Mars.png', 6.39 * 10**23)
+    mars = Planet(-1.524 * Planet.AU, 0, 0.53, 'Sprites/Mars.png', 6.39 * 10**23)
     mars.y_vel = 24.077 * 1000
     
-    jupiter = Planet(5.204 * Planet.AU, 0, 71490 * 10**3, 'Sprites/Jupiter.png', 1.8986 * 10**27)
+    jupiter = Planet(5.204 * Planet.AU, 0, 11.21, 'Sprites/Jupiter.png', 1.8986 * 10**27)
     jupiter.y_vel = 13.1 * 1000
 
-    saturn = Planet(9.54 * Planet.AU, 0, 60270 * 10**3, 'Sprites/Saturn.png', 5.68 * 10**26)
+    saturn = Planet(9.54 * Planet.AU, 0, 9.45, 'Sprites/Saturn.png', 5.68 * 10**26)
     saturn.y_vel = 9.68 * 1000
     
-    uranus = Planet(18.4 * Planet.AU, 0, 25560 * 10**3, 'Sprites/Uranus.png', 8.68 * 10**25)
+    uranus = Planet(18.4 * Planet.AU, 0, 4.01, 'Sprites/Uranus.png', 8.68 * 10**25)
     uranus.y_vel = -6.8 * 1000
 
-    neptune = Planet(30 * Planet.AU, 0, 24760, 'Sprites/Neptune.png', 1.02 * 10**26)
+    neptune = Planet(30 * Planet.AU, 0, 3.88, 'Sprites/Neptune.png', 1.02 * 10**26)
     neptune .y_vel = -5.44 * 1000
 
-    pluto = Planet(39.53 * Planet.AU, 0, 1188 * 10**3, 'Sprites/Pluto.png', 1.305 * 10**22)
+    pluto = Planet(39.53 * Planet.AU, 0, 0.19, 'Sprites/Pluto.png', 1.305 * 10**22)
     pluto.y_vel = 4.74 * 1000
     
     planets = [sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto]
+    
+    # Переключатели
+    plus_pressed = False
+    minus_pressed = False
     
     # Основной цикл
     run = True
@@ -61,12 +65,35 @@ def main():
         for e in event.get():
 
             # Закрытие окна
-            if e.type == KEYDOWN and e.key == K_ESCAPE:
-                run = False
+            if e.type == KEYDOWN:
+                
+                if e.key == K_ESCAPE:
+                    run = False
+                    
+                elif e.key == K_UP:
+                    plus_pressed = True
+                elif e.key == K_DOWN:
+                    minus_pressed = True
         
         # Отрисовка
         for planet in planets:
-            planet.draw(window)
+            
+            if plus_pressed and planet.SCALE_K >= -100:
+                planet.SCALE_K -= 10
+                planet.SCALE = planet.SCALE_K / planet.AU
+                
+                # planet.radius = int(planet.radius * planet.SCALE_K)
+                
+            elif minus_pressed and planet.SCALE_K <= 500:
+                planet.SCALE_K += 10
+                planet.SCALE = planet.SCALE_K / planet.AU
+                
+                # planet.radius = int(planet.radius * planet.SCALE_K)
+            
+            planet.draw()
+            
+        plus_pressed = False
+        minus_pressed = False        
 
     quit()
 
