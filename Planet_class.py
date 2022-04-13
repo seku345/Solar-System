@@ -17,11 +17,11 @@ class Planet(sprite.Sprite):
     TIMESTEP = 3600 * 24 # Шаг времени: 1 секунда равна 1 суткам
 
     # Инициализация
-    def __init__(self, x, y, radius, planet_image, color, mass, sun= False):
+    def __init__(self, x, y, radius, planet_image, color, mass):
         super().__init__()
 
         self.planet_image = planet_image
-        self.radius = radius
+        self.radius = int(self.SCALE_K/5)
         self.image = transform.scale(image.load(planet_image), (self.radius, self.radius))
         self.x = x
         self.y = y
@@ -34,7 +34,7 @@ class Planet(sprite.Sprite):
         self.distance_to_sun = 0
         self.orbit = []
         
-        self.sun = sun
+        self.sun = False
 
     # Отрисовка
     def draw(self):
@@ -51,8 +51,11 @@ class Planet(sprite.Sprite):
                 updated_points.append((x, y))
 
             draw.lines(window, self.color, False, updated_points, 2)
-            
-        window.blit(self.image, (x, y))    
+        
+        if not self.sun:
+            window.blit(self.image, (int(x - self.radius/2), int(y - self.radius/2)))
+        else:    
+            window.blit(self.image, (int(x), int(y)))
             
         if not self.sun:
             distance_text = FONT.render(f'{round(self.distance_to_sun/1000, 1)}km', 1, (255, 255, 255))
@@ -81,7 +84,7 @@ class Planet(sprite.Sprite):
         
             fx, fy = self.attraction(planet)
             total_fx += fx
-            total_fy = fy
+            total_fy += fy
         
         self.x_vel += total_fx / self.mass * self.TIMESTEP
         self.y_vel += total_fy / self.mass * self.TIMESTEP
