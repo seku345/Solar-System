@@ -1,101 +1,132 @@
 planets_info = {
-                'Mercury': {
+                'Mercury':  {
                             'name': 'Mercury',
-                            'mass': 3.26 * 10**23,
-                            'density': 5430,
+                            'mass': 3.30 * 10**23,
+                            'density': 5420,
                             'radius': 2.42 * 10**6,
                             'gravity': 3.7,
-                            'velocity': 48 * 10**3,
+                            'velocity': 47.4 * 10**3,
                             'composition': 'Fe, Ni',
                             'atmosphere': 'O2, Na, H2, He, K',
-                            'period': 88
+                            'period': '87.97 Earth days',
+                            'day': '58 Earth days',
+                            'temperature': '167 °C'
                             },
-                'Venus': {
+                'Venus':    {
                             'name': 'Venus',
-                            'mass': ...,
-                            'density': ...,
-                            'radius': ...,
-                            'gravity': ...,
-                            'velocity': ...,
-                            'composition': '',
-                            'atmosphere': '',
-                            'period': ...
+                            'mass': 4.8685 * 10**24,
+                            'density': 5250,
+                            'radius': 6.1 * 10**6,
+                            'gravity': 8.9,
+                            'velocity': 35.02 * 10**3,
+                            'composition': 'Fe, Ni, Si',
+                            'atmosphere': 'CO2, N2, H2SO4',
+                            'period': '224.7 Earth days',
+                            'day': '243 Earth days',
+                            'temperature': '464 °C'
                             },
-                'Earth': {
+                'Earth':    {
                             'name': 'Earth',
-                            'mass': ...,
-                            'density': ...,
-                            'radius': ...,
-                            'gravity': ...,
-                            'velocity': ...,
+                            'mass': 5.9742 * 10**24,
+                            'density': 5520,
+                            'radius': 6.37 * 10**6,
+                            'gravity': 9.8,
+                            'velocity': 29.783 * 10**3,
                             'composition': '',
                             'atmosphere': '',
-                            'period': ...
+                            'period': '365.24 Earth days',
+                            'day': '24 Earth hours',
+                            'temperature': '15 °C'
                             },
-                'Mars': {
+                'Mars':     {
                             'name': 'Mars',
-                            'mass': ...,
-                            'density': ...,
-                            'radius': ...,
-                            'gravity': ...,
-                            'velocity': ...,
+                            'mass': 6.39 * 10**23,
+                            'density': 3940,
+                            'radius': 3.38 * 10**6,
+                            'gravity': 3.7,
+                            'velocity': 24.077 * 10**3,
                             'composition': '',
                             'atmosphere': '',
-                            'period': ...
+                            'period': '687 Earth days',
+                            'day': '24.5 Earth hours',
+                            'temperature': '-65 °C'
                             },
-                'Jupiter': {
+                'Jupiter':  {
                             'name': 'Jupiter',
-                            'mass': ...,
-                            'density': ...,
-                            'radius': ...,
-                            'gravity': ...,
-                            'velocity': ...,
+                            'mass': 1.8986 * 10**27,
+                            'density': 1310,
+                            'radius': 7.13 * 10**7,
+                            'gravity': 25.8,
+                            'velocity': 13.1 * 10**3,
                             'composition': '',
                             'atmosphere': '',
-                            'period': ...
+                            'period': '11.9 Earth years',
+                            'day': '10 Earth hours',
+                            'temperature': '-110 °C'
                             },
-                'Saturn': {
+                'Saturn':   {
                             'name': 'Saturn',
-                            'mass': ...,
-                            'density': ...,
-                            'radius': ...,
-                            'gravity': ...,
-                            'velocity': ...,
+                            'mass': 5.68 * 10**26,
+                            'density': 690,
+                            'radius': 6.04 * 10**7,
+                            'gravity': 11.3,
+                            'velocity': 9.68 * 10**3,
                             'composition': '',
                             'atmosphere': '',
-                            'period': ...
+                            'period': '29.5 Earth years',
+                            'day': '10.2 Earth hours',
+                            'temperature': '-140 °C'
                             },
-                'Uranus': {
+                'Uranus':   {
                             'name': 'Uranus',
-                            'mass': ...,
-                            'density': ...,
-                            'radius': ...,
-                            'gravity': ...,
-                            'velocity': ...,
+                            'mass': 8.68 * 10**25,
+                            'density': 1190,
+                            'radius': 2.38 * 10**7,
+                            'gravity': 9,
+                            'velocity': 6.8 * 10**3,
                             'composition': '',
                             'atmosphere': '',
-                            'period': ...
+                            'period': '84 Earth years',
+                            'day': '10.7 Earth hours',
+                            'temperature': '-195 °C'
                             },
-                'Neptune': {
+                'Neptune':  {
                             'name': 'Neptune',
-                            'mass': ...,
-                            'density': ...,
-                            'radius': ...,
-                            'gravity': ...,
-                            'velocity': ...,
+                            'mass': 1.02 * 10**26,
+                            'density': 1660,
+                            'radius': 2.22 * 10**7,
+                            'gravity': 11.6,
+                            'velocity': 5.44 * 10**3,
                             'composition': '',
                             'atmosphere': '',
-                            'period': ...
+                            'period': '164.8 Earth years',
+                            'day': '16 Earth hours',
+                            'temperature': '-200 °C'
                             },
-                'Pluto': {
+                'Pluto':    {
                             'name': 'Pluto',
-                            'mass': ...,
-                            'density': ...,
-                            'radius': ...,
-                            'gravity': ...,
-                            'velocity': ...,
+                            'mass': 1.305 * 10**22,
+                            'density': 1860,
+                            'radius': 1.19 * 10**6,
+                            'gravity': 0.66,
+                            'velocity': 4.74 * 10**3,
                             'composition': '',
                             'atmosphere': '',
-                            'period': ...
+                            'period': '248 Earth years',
+                            'day': '153.5 Earth hours',
+                            'temperature': '-225 °C'
                             },
+                'Sun':      {
+                            'name': 'Sun',
+                            'mass': 1.98892 * 10**30,
+                            'density': 1410,
+                            'radius': 696 * 10**6,
+                            'gravity': 273.8,
+                            'velocity': 217 * 10**3,
+                            'composition': 'Fe, Ni, Si, Mg, Ca',
+                            'atmoshpere': 'H2, He, C, N2, O2',
+                            'period': 'NaN',
+                            'day': '22.6 Earth years',
+                            'temperature': '5506 °C'
+                            }
                 }

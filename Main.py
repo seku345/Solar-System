@@ -20,7 +20,7 @@ def main():
     sun.sun = True
 
     mercury = Planet(0.387 * Planet.AU, 0, 0.5, 'Sprites/Mercury.png', colors['BROWN'], 3.30 * 10**23)
-    mercury.y_vel = -47.4 * 1000
+    mercury.y_vel = -48 * 1000
 
     venus = Planet(-0.723 * Planet.AU, 0, 1, 'Sprites/Venus.png', colors['WHITE'], 4.8685 * 10**24)
     venus.y_vel = -35.02 * 1000
