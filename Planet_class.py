@@ -2,27 +2,28 @@ from math import sqrt, atan2, cos, sin
 
 from pygame import *
 
-from Window import H, V, window
+from Window import H, V, window, FONT
 
-font.init()
-FONT = font.Font("Font.ttf", 16)
-
-class Planet(sprite.Sprite):
+class Planet:
 
     # Константы
     AU = 149.6e6 * 1000 # Астрономическая единица
     G =  6.7428e-11 # Гравитационная постоянная
-    SCALE_K = 250
+    SCALE_K = 300
     SCALE = SCALE_K / AU # 1AU = 100 px
     TIMESTEP = 3600 * 24 # Шаг времени: 1 секунда равна 1 суткам
 
     # Инициализация
-    def __init__(self, x, y, radius, planet_image, color, mass):
+    def __init__(self, x, y, radius, planet_image, color, mass, saturn= False):
         super().__init__()
 
         self.planet_image = planet_image
-        self.radius = int(self.SCALE_K/5)
-        self.image = transform.scale(image.load(planet_image), (self.radius, self.radius))
+        self.radius_k = radius
+        self.radius = int(self.radius_k * self.SCALE_K/5)
+        if not saturn:
+            self.image = transform.scale(image.load(planet_image), (self.radius, self.radius))
+        else:
+            self.image = transform.scale(image.load(planet_image), (self.radius*2, self.radius))
         self.x = x
         self.y = y
         self.mass = mass
@@ -35,6 +36,7 @@ class Planet(sprite.Sprite):
         self.orbit = []
         
         self.sun = False
+        self.saturn = saturn
 
     # Отрисовка
     def draw(self):

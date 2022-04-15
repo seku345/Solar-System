@@ -5,6 +5,10 @@ from pygame import  *
 H = GetSystemMetrics(0)
 V = GetSystemMetrics(1)
 
+# Шрифты
+font.init()
+FONT = font.Font("Font.ttf", 16)
+
 # Окно
 window = display.set_mode((0, 0), FULLSCREEN)
 display.set_caption('Planet Simulation')
