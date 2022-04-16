@@ -2,7 +2,7 @@ from math import sqrt, atan2, cos, sin
 
 from pygame import *
 
-from Window import H, V, window, FONT
+from Window import H, V, window, FONT, colors
 
 class Planet:
 
@@ -14,9 +14,11 @@ class Planet:
     TIMESTEP = 3600 * 24 # Шаг времени: 1 секунда равна 1 суткам
 
     # Инициализация
-    def __init__(self, x, y, radius, planet_image, color, mass, saturn= False):
+    def __init__(self, name, x, y, radius, planet_image, color, mass, saturn= False):
         super().__init__()
 
+        self.name = name
+        
         self.planet_image = planet_image
         self.radius_k = radius
         self.radius = int(self.radius_k * self.SCALE_K/5)
@@ -60,7 +62,7 @@ class Planet:
             window.blit(self.image, (int(x), int(y)))
             
         if not self.sun:
-            distance_text = FONT.render(f'{round(self.distance_to_sun/1000, 1)}km', 1, (255, 255, 255))
+            distance_text = FONT.render(f'{round(self.distance_to_sun/1000, 1)}km', 1, colors['WHITE'])
             window.blit(distance_text, (x - distance_text.get_width()/2, y - distance_text.get_height()/2))
 
     def attraction(self, other):

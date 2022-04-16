@@ -3,8 +3,9 @@ from math import *
 
 from pygame import *
 
-# Параметры окна
+# Параметры
 from Window import window, background, colors
+from Characteristics_of_planets import planets_info
 
 # Классы
 from Planet_class import Planet
@@ -16,35 +17,35 @@ def main():
     clock = time.Clock()
 
     # Создание планет
-    sun = Planet(0, 0, 2.5, 'Sprites/Sun.png', colors['YELLOW'], 1.98892 * 10**30)
+    sun = Planet(planets_info['Sun']['name'], 0, 0, 2.5, 'Sprites/Sun.png', colors['YELLOW'], planets_info['Sun']['mass'])
     sun.sun = True
 
-    mercury = Planet(0.387 * Planet.AU, 0, 0.5, 'Sprites/Mercury.png', colors['BROWN'], 3.30 * 10**23)
-    mercury.y_vel = -48 * 1000
+    mercury = Planet(planets_info['Mercury']['name'], -0.387 * Planet.AU, 0, 0.5, 'Sprites/Mercury.png', colors['BROWN'], planets_info['Mercury']['mass'])
+    mercury.y_vel = planets_info['Mercury']['velocity']
 
-    venus = Planet(-0.723 * Planet.AU, 0, 1, 'Sprites/Venus.png', colors['WHITE'], 4.8685 * 10**24)
-    venus.y_vel = -35.02 * 1000
+    venus = Planet(planets_info['Venus']['name'], -0.723 * Planet.AU, 0, 1, 'Sprites/Venus.png', colors['WHITE'], planets_info['Venus']['mass'])
+    venus.y_vel = -planets_info['Venus']['velocity']
 
-    earth = Planet(-1 * Planet.AU, 0, 1, 'Sprites/Earth.png', colors['BLUE'], 5.9742 * 10**24)
-    earth.y_vel = 29.783 * 1000
+    earth = Planet(planets_info['Earth']['name'], -1 * Planet.AU, 0, 1, 'Sprites/Earth.png', colors['BLUE'], planets_info['Earth']['mass'])
+    earth.y_vel = planets_info['Earth']['velocity']
     
-    mars = Planet(-1.524 * Planet.AU, 0, 1, 'Sprites/Mars.png', colors['RED'], 6.39 * 10**23)
-    mars.y_vel = 24.077 * 1000
+    mars = Planet(planets_info['Mars']['name'], -1.524 * Planet.AU, 0, 1, 'Sprites/Mars.png', colors['RED'], planets_info['Mars']['mass'])
+    mars.y_vel = planets_info['Mars']['velocity']
     
-    jupiter = Planet(-5.2 * Planet.AU, 0, 1.5, 'Sprites/Jupiter.png', colors['BEIGE'], 1.8986 * 10**27)
-    jupiter.y_vel = 13.1 * 1000
+    jupiter = Planet(planets_info['Jupiter']['name'], -5.2 * Planet.AU, 0, 1.5, 'Sprites/Jupiter.png', colors['BEIGE'], planets_info['Jupiter']['mass'])
+    jupiter.y_vel = planets_info['Jupiter']['velocity']
 
-    saturn = Planet(-9.54 * Planet.AU, 0, 1.75, 'Sprites/Saturn.png', colors['ORANGE'], 5.68 * 10**26, saturn= True)
-    saturn.y_vel = 9.68 * 1000
+    saturn = Planet(planets_info['Saturn']['name'], -9.54 * Planet.AU, 0, 1.75, 'Sprites/Saturn.png', colors['ORANGE'], planets_info['Saturn']['mass'], saturn= True)
+    saturn.y_vel = planets_info['Saturn']['velocity']
     
-    uranus = Planet(-19.2 * Planet.AU, 0, 1.5, 'Sprites/Uranus.png', colors['ICE'], 8.68 * 10**25)
-    uranus.y_vel = -6.8 * 1000
+    uranus = Planet(planets_info['Uranus']['name'], -19.2 * Planet.AU, 0, 1.5, 'Sprites/Uranus.png', colors['ICE'], planets_info['Uranus']['mass'])
+    uranus.y_vel = -planets_info['Uranus']['velocity']
 
-    neptune = Planet(30 * Planet.AU, 0, 1.5, 'Sprites/Neptune.png', colors['LIGHT_BLUE'], 1.02 * 10**26)
-    neptune.y_vel = -5.44 * 1000
+    neptune = Planet(planets_info['Neptune']['name'], -30 * Planet.AU, 0, 1.5, 'Sprites/Neptune.png', colors['LIGHT_BLUE'], planets_info['Neptune']['mass'])
+    neptune.y_vel = planets_info['Neptune']['velocity']
 
-    pluto = Planet(-39.53 * Planet.AU, 0, 0.5, 'Sprites/Pluto.png', colors['DARK_GREY'], 1.305 * 10**22)
-    pluto.y_vel = 4.74 * 1000
+    pluto = Planet(planets_info['Pluto']['name'], -39.53 * Planet.AU, 0, 0.5, 'Sprites/Pluto.png', colors['DARK_GREY'], planets_info['Pluto']['mass'])
+    pluto.y_vel = planets_info['Pluto']['velocity']
     
     planets = [sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto]
     
