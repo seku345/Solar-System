@@ -85,20 +85,14 @@ def main():
             # Проверка нажатия на планеты
             elif e.type == MOUSEBUTTONDOWN:
                 click_coor = list(mouse.get_pos())
-                #click_coor[0] -= H/2
-                #click_coor[1] -= V/2
-                # print(click_coor)
 
                 for p in planets:
                     
                     x = p.x * p.SCALE + H/2 - p.radius/2
                     y = p.y * p.SCALE + V/2 - p.radius/2
-                    # print(x, y)
-                    # print(x + p.radius, y + p.radius)
                     
                     if x <= click_coor[0] <= x + p.radius and y <= click_coor[1] <= y + p.radius:
                         index = planets.index(p)
-                        print(index)
                         
         # Отрисовка
         for planet in planets:
