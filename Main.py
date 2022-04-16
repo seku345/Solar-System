@@ -1,20 +1,26 @@
 # Библиотеки
-from time import time
-
-from pygame import *
+import pygame as pg
 
 # Параметры
-from Window import window, background, colors, H, V
+from Window import window, background, colors, H, V, FONT_DATE
 from Characteristics_of_planets import planets_info
+
+# Дата
+from Time import date
 
 # Классы
 from Planet_class import Planet
 from Table_class import  Table
 
+pg.init()
+
 # Главная функция
 def main():
 
-    clock = time.Clock()
+    clock = pg.time.Clock()
+    
+    change_date = pg.USEREVENT
+    pg.time.set_timer(change_date, 1000)
 
     # Создание планет
     sun = Planet(planets_info['Sun']['name'], 0, 0, 2.5, 'Sprites/Sun.png', colors['YELLOW'], planets_info['Sun']['mass'])
@@ -56,6 +62,7 @@ def main():
     plus_pressed = False
     minus_pressed = False
     index = 0
+    start_date = '10.03.1982'
     
     # Основной цикл
     run = True
@@ -63,28 +70,28 @@ def main():
 
         # Кадры в секунду
         clock.tick(60)
-        display.update()
+        pg.display.update()
 
         # Фон
         window.blit(background, (0, 0))
 
         # Обработка событий
-        for e in event.get():
+        for e in pg.event.get():
 
             # Закрытие окна
-            if e.type == KEYDOWN:
+            if e.type == pg.KEYDOWN:
                 
-                if e.key == K_ESCAPE:
+                if e.key == pg.K_ESCAPE:
                     run = False
                     
-                elif e.key == K_UP:
+                elif e.key == pg.K_UP:
                     plus_pressed = True
-                elif e.key == K_DOWN:
+                elif e.key == pg.K_DOWN:
                     minus_pressed = True
                     
             # Проверка нажатия на планеты
-            elif e.type == MOUSEBUTTONDOWN:
-                click_coor = list(mouse.get_pos())
+            elif e.type == pg.MOUSEBUTTONDOWN:
+                click_coor = list(pg.mouse.get_pos())
 
                 for p in planets:
                     
@@ -93,6 +100,10 @@ def main():
                     
                     if x <= click_coor[0] <= x + p.radius and y <= click_coor[1] <= y + p.radius:
                         index = planets.index(p)
+            
+            # Смена даты
+            elif e.type == change_date:
+                 start_date = date(start_date)
                         
         # Отрисовка
         for planet in planets:
@@ -114,9 +125,9 @@ def main():
                 else:
                     planet.radius = int(planet.radius_k * planet.SCALE_K*2)
             if not planet.saturn:
-                planet.image = transform.scale(image.load(planet.planet_image), (planet.radius, planet.radius))
+                planet.image = pg.transform.scale(pg.image.load(planet.planet_image), (planet.radius, planet.radius))
             else:
-                planet.image = transform.scale(image.load(planet.planet_image), (planet.radius, int(planet.radius/2)))
+                planet.image = pg.transform.scale(pg.image.load(planet.planet_image), (planet.radius, int(planet.radius/2)))
             if not planet.sun:
                 planet.update_position(planets)
                             
@@ -127,6 +138,10 @@ def main():
         
         # Отрисовка табло
         table.draw(planets, index)
+        
+        # Отрисовка даты
+        date_text = FONT_DATE.render(date(start_date), 1, colors['WHITE'])
+        window.blit(date_text, (30, V-100))
         
     quit()
 

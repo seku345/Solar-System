@@ -9,6 +9,7 @@ V = GetSystemMetrics(1)
 font.init()
 FONT = font.Font("Font.ttf", 16)
 FONT_TEXT = font.Font("Font.ttf", 32)
+FONT_DATE = font.Font("Font.ttf", 100)
 
 # Окно
 window = display.set_mode((0, 0), FULLSCREEN)
