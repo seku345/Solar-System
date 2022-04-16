@@ -7,9 +7,9 @@ planets_info = {
                             'gravity': 3.7,
                             'velocity': 47.4 * 10**3,
                             'atmosphere': 'O2, Na, H2, He, K',
-                            'period': '87.97 Earth days',
+                            'year': '87.97 Earth days',
                             'day': '58 Earth days',
-                            'temperature': '167 °C'
+                            'temperature': '167 C'
                             },
                 'Venus':    {
                             'name': 'Venus',
@@ -19,9 +19,9 @@ planets_info = {
                             'gravity': 8.9,
                             'velocity': 35.02 * 10**3,
                             'atmosphere': 'CO2, N2, H2SO4',
-                            'period': '224.7 Earth days',
+                            'year': '224.7 Earth days',
                             'day': '243 Earth days',
-                            'temperature': '464 °C'
+                            'temperature': '464 C'
                             },
                 'Earth':    {
                             'name': 'Earth',
@@ -31,9 +31,9 @@ planets_info = {
                             'gravity': 9.8,
                             'velocity': 29.783 * 10**3,
                             'atmosphere': 'N2, O2, Ar, CO2',
-                            'period': '365.24 Earth days',
+                            'year': '365.24 Earth days',
                             'day': '24 Earth hours',
-                            'temperature': '15 °C'
+                            'temperature': '15 C'
                             },
                 'Mars':     {
                             'name': 'Mars',
@@ -43,9 +43,9 @@ planets_info = {
                             'gravity': 3.7,
                             'velocity': 24.077 * 10**3,
                             'atmosphere': 'CO2, N2, Ar',
-                            'period': '687 Earth days',
+                            'year': '687 Earth days',
                             'day': '24.5 Earth hours',
-                            'temperature': '-65 °C'
+                            'temperature': '-65 C'
                             },
                 'Jupiter':  {
                             'name': 'Jupiter',
@@ -55,9 +55,9 @@ planets_info = {
                             'gravity': 25.8,
                             'velocity': 13.1 * 10**3,
                             'atmosphere': 'H2, He',
-                            'period': '11.9 Earth years',
+                            'year': '11.9 Earth years',
                             'day': '10 Earth hours',
-                            'temperature': '-110 °C'
+                            'temperature': '-110 C'
                             },
                 'Saturn':   {
                             'name': 'Saturn',
@@ -67,9 +67,9 @@ planets_info = {
                             'gravity': 11.3,
                             'velocity': 9.68 * 10**3,
                             'atmosphere': 'H2, He, CH4',
-                            'period': '29.5 Earth years',
+                            'year': '29.5 Earth years',
                             'day': '10.2 Earth hours',
-                            'temperature': '-140 °C'
+                            'temperature': '-140 C'
                             },
                 'Uranus':   {
                             'name': 'Uranus',
@@ -79,9 +79,9 @@ planets_info = {
                             'gravity': 9,
                             'velocity': 6.8 * 10**3,
                             'atmosphere': 'H2, He, H2O, CH4',
-                            'period': '84 Earth years',
+                            'year': '84 Earth years',
                             'day': '10.7 Earth hours',
-                            'temperature': '-195 °C'
+                            'temperature': '-195 C'
                             },
                 'Neptune':  {
                             'name': 'Neptune',
@@ -91,9 +91,9 @@ planets_info = {
                             'gravity': 11.6,
                             'velocity': 5.44 * 10**3,
                             'atmosphere': 'H2, He, N2, H2O',
-                            'period': '164.8 Earth years',
+                            'year': '164.8 Earth years',
                             'day': '16 Earth hours',
-                            'temperature': '-200 °C'
+                            'temperature': '-200 C'
                             },
                 'Pluto':    {
                             'name': 'Pluto',
@@ -103,9 +103,9 @@ planets_info = {
                             'gravity': 0.66,
                             'velocity': 4.74 * 10**3,
                             'atmosphere': 'N2, CH4, CO',
-                            'period': '248 Earth years',
+                            'year': '248 Earth years',
                             'day': '153.5 Earth hours',
-                            'temperature': '-225 °C'
+                            'temperature': '-225 C'
                             },
                 'Sun':      {
                             'name': 'Sun',
@@ -115,8 +115,8 @@ planets_info = {
                             'gravity': 273.8,
                             'velocity': 217 * 10**3,
                             'atmoshpere': 'H2, He, C, N2, O2',
-                            'period': 'NaN',
+                            'year': 'NaN',
                             'day': '22.6 Earth years',
-                            'temperature': '5506 °C'
+                            'temperature': '5506 C'
                             }
                 }

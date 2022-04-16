@@ -39,7 +39,7 @@ class Planet:
         
         self.sun = False
         self.saturn = saturn
-
+        
     # Отрисовка
     def draw(self):
         

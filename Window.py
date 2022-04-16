@@ -8,7 +8,7 @@ V = GetSystemMetrics(1)
 # Шрифты
 font.init()
 FONT = font.Font("Font.ttf", 16)
-FONT_TEXT = font.Font("Font.ttf", 30)
+FONT_TEXT = font.Font("Font.ttf", 32)
 
 # Окно
 window = display.set_mode((0, 0), FULLSCREEN)
