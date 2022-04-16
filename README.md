@@ -6,4 +6,4 @@ When you click the mouse cursor on the planets, information about them appears i
 The simulation date is displayed at the bottom of the screen.
 The starting date is March 10, 1982 - the last parade of planets, when everyone was in the same row.
 Press Space to pause.
-Press Ecs to exit.
+Press Esc to exit.
