@@ -11,7 +11,7 @@ class Planet:
     G =  6.7428e-11 # Гравитационная постоянная
     SCALE_K = 300
     SCALE = SCALE_K / AU # 1AU = 100 px
-    TIMESTEP = 3600 * 24 # Шаг времени: 1 секунда равна 1 суткам
+    TIMESTEP = 3600 * 24 # 1 кадр = 1 день
 
     # Инициализация
     def __init__(self, name, x, y, radius, planet_image, color, mass, saturn= False):

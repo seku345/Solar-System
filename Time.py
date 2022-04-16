@@ -11,8 +11,10 @@ def date(start_date):
         day += 1
     else:
         month += 1
-        day = 1
-    
+        if not month % 3:
+            day = 1
+        else:
+            day = 2
 
     if month > 12:
         year += 1

@@ -19,9 +19,6 @@ def main():
 
     clock = pg.time.Clock()
     
-    change_date = pg.USEREVENT
-    pg.time.set_timer(change_date, 1000)
-
     # Создание планет
     sun = Planet(planets_info['Sun']['name'], 0, 0, 2.5, 'Sprites/Sun.png', colors['YELLOW'], planets_info['Sun']['mass'])
     sun.sun = True
@@ -63,6 +60,7 @@ def main():
     minus_pressed = False
     index = 0
     start_date = '10.03.1982'
+    pause = False
     
     # Основной цикл
     run = True
@@ -89,6 +87,11 @@ def main():
                 elif e.key == pg.K_DOWN:
                     minus_pressed = True
                     
+                elif e.key == pg.K_SPACE and not pause:
+                    pause = True
+                elif e.key == pg.K_SPACE and pause:
+                    pause = False
+                    
             # Проверка нажатия на планеты
             elif e.type == pg.MOUSEBUTTONDOWN:
                 click_coor = list(pg.mouse.get_pos())
@@ -100,14 +103,10 @@ def main():
                     
                     if x <= click_coor[0] <= x + p.radius and y <= click_coor[1] <= y + p.radius:
                         index = planets.index(p)
-            
-            # Смена даты
-            elif e.type == change_date:
-                 start_date = date(start_date)
-                        
+        
         # Отрисовка
         for planet in planets:
-                
+            
             if plus_pressed and planet.SCALE_K <= 500:
                 planet.SCALE_K += 10
                 planet.SCALE = planet.SCALE_K / planet.AU
@@ -115,7 +114,6 @@ def main():
                     planet.radius = int(planet.radius_k * planet.SCALE_K/5)
                 else:
                     planet.radius = int(planet.radius_k * planet.SCALE_K*2)
-                
                 
             elif minus_pressed and planet.SCALE_K >= 20:
                 planet.SCALE_K -= 10
@@ -129,10 +127,15 @@ def main():
             else:
                 planet.image = pg.transform.scale(pg.image.load(planet.planet_image), (planet.radius, int(planet.radius/2)))
             if not planet.sun:
-                planet.update_position(planets)
-                            
+                if not pause:
+                    planet.update_position(planets)
+   
+            if planet == earth:
+                if not pause:
+                    start_date = date(start_date)
+                    
             planet.draw()    
-
+            
         plus_pressed = False
         minus_pressed = False
         
