@@ -1,5 +1,5 @@
 # Библиотеки
-from math import *
+from time import time
 
 from pygame import *
 
