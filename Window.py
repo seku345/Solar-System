@@ -1,3 +1,4 @@
+# Библиотеки
 from win32api import GetSystemMetrics
 import pygame as pg
 

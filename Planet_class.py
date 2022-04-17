@@ -1,3 +1,4 @@
+# Библиотеки
 from math import sqrt, atan2, cos, sin, pi
 
 import pygame as pg
@@ -46,6 +47,7 @@ class Planet:
         x = self.x * self.SCALE + H/2 - self.radius/2
         y = self.y * self.SCALE + V/2 - self.radius/2
         
+        # Орбита
         if len(self.orbit) > 2:
             updated_points = []
             for point in self.orbit:
@@ -60,15 +62,18 @@ class Planet:
             if len(self.orbit) > 2 * pi * self.distance_to_sun:
                 del self.orbit[0]
         
+        # Планета
         if not self.sun:
             window.blit(self.image, (int(x - self.radius/2), int(y - self.radius/2)))
         else:    
             window.blit(self.image, (int(x), int(y)))
-            
+        
+        # Расстояние до Солнца
         if not self.sun:
             distance_text = FONT.render(f'{round(self.distance_to_sun/1000, 1)}km', 1, colors['WHITE'])
             window.blit(distance_text, (x - distance_text.get_width()/2, y - distance_text.get_height()/2))
 
+    # Взаимодействие между планетами
     def attraction(self, other):
         other_x, other_y = other.x, other.y
         distance_x = other_x - self.x
@@ -84,6 +89,7 @@ class Planet:
         force_y = sin(theta) * force
         return force_x, force_y
     
+    # Расчет новых координат
     def update_position(self, planets):
         total_fx = total_fy = 0
         for planet in planets:

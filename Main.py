@@ -12,11 +12,10 @@ from Time import date
 from Planet_class import Planet
 from Table_class import  Table
 
-pg.init()
-
 # Главная функция
 def main():
 
+    # Часы
     clock = pg.time.Clock()
     
     # Создание планет
@@ -55,7 +54,7 @@ def main():
     # Табло
     table = Table(500, 400)
     
-    # Переключатели
+    # Переменные
     plus_pressed = False
     minus_pressed = False
     index = 0
@@ -81,12 +80,14 @@ def main():
                 
                 if e.key == pg.K_ESCAPE:
                     run = False
-                    
+                
+                # Изменение масштаба    
                 elif e.key == pg.K_UP:
                     plus_pressed = True
                 elif e.key == pg.K_DOWN:
                     minus_pressed = True
-                    
+                
+                # Пауза
                 elif e.key == pg.K_SPACE and not pause:
                     pause = True
                 elif e.key == pg.K_SPACE and pause:

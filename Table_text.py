@@ -1,8 +1,8 @@
+# Библиотеки
 from Window import FONT_TEXT, colors
 from Characteristics_of_planets import planets_info
 
 def write(planet, window, x, y):
-
         
     current_name = planet.name
     
@@ -10,6 +10,7 @@ def write(planet, window, x, y):
     
     for parameter in planets_info[current_name]:
         
+        # Окончания
         if parameter == 'mass': end = ' kg'
         elif parameter == 'density': end = ' kg/m^3'
         elif parameter == 'radius': end = ' m'
@@ -21,6 +22,7 @@ def write(planet, window, x, y):
     
     text_list.append(FONT_TEXT.render('distance to sun' + ': ' + str(round(planet.distance_to_sun / 1_000, 1)) + ' km', 1, colors['WHITE']))
     
+    # Отрисовка данных
     for text in text_list:
         
         window.blit(text, (x, y))
