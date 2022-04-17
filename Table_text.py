@@ -1,5 +1,3 @@
-from pygame import *
-
 from Window import FONT_TEXT, colors
 from Characteristics_of_planets import planets_info
 

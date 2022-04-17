@@ -1,20 +1,20 @@
 from win32api import GetSystemMetrics
-from pygame import  *
+import pygame as pg
 
 # Получение размеров окна
 H = GetSystemMetrics(0)
 V = GetSystemMetrics(1)
 
 # Шрифты
-font.init()
-FONT = font.Font("Font.ttf", 16)
-FONT_TEXT = font.Font("Font.ttf", 32)
-FONT_DATE = font.Font("Font.ttf", 100)
+pg.font.init()
+FONT = pg.font.Font("Font.ttf", 16)
+FONT_TEXT = pg.font.Font("Font.ttf", 32)
+FONT_DATE = pg.font.Font("Font.ttf", 100)
 
 # Окно
-window = display.set_mode((0, 0), FULLSCREEN)
-display.set_caption('Planet Simulation')
-background = transform.scale(image.load('Sprites/Background.jpg'), (H, V))
+window = pg.display.set_mode((0, 0), pg.FULLSCREEN)
+pg.display.set_caption('Planet Simulation')
+background = pg.transform.scale(pg.image.load('Sprites/Background.jpg'), (H, V))
 
 # Цвета
 colors = {

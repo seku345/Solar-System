@@ -1,6 +1,6 @@
 from math import sqrt, atan2, cos, sin, pi
 
-from pygame import *
+import pygame as pg
 
 from Window import H, V, window, FONT, colors
 
@@ -23,9 +23,9 @@ class Planet:
         self.radius_k = radius
         self.radius = int(self.radius_k * self.SCALE_K/5)
         if not saturn:
-            self.image = transform.scale(image.load(planet_image), (self.radius, self.radius))
+            self.image = pg.transform.scale(pg.image.load(planet_image), (self.radius, self.radius))
         else:
-            self.image = transform.scale(image.load(planet_image), (self.radius*2, self.radius))
+            self.image = pg.transform.scale(pg.image.load(planet_image), (self.radius*2, self.radius))
         self.x = x
         self.y = y
         self.mass = mass
@@ -55,7 +55,7 @@ class Planet:
                 updated_points.append((x, y))
             
 
-            draw.lines(window, self.color, False, updated_points, 2)
+            pg.draw.lines(window, self.color, False, updated_points, 2)
             
             if len(self.orbit) > 2 * pi * self.distance_to_sun:
                 del self.orbit[0]
