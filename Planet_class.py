@@ -1,4 +1,4 @@
-from math import sqrt, atan2, cos, sin
+from math import sqrt, atan2, cos, sin, pi
 
 from pygame import *
 
@@ -53,8 +53,12 @@ class Planet:
                 x = x * self.SCALE + H / 2
                 y = y * self.SCALE + V / 2
                 updated_points.append((x, y))
+            
 
             draw.lines(window, self.color, False, updated_points, 2)
+            
+            if len(self.orbit) > 2 * pi * self.distance_to_sun:
+                del self.orbit[0]
         
         if not self.sun:
             window.blit(self.image, (int(x - self.radius/2), int(y - self.radius/2)))
