@@ -81,12 +81,6 @@ def main():
                 if e.key == pg.K_ESCAPE:
                     run = False
                 
-                # Изменение масштаба    
-                elif e.key == pg.K_UP:
-                    plus_pressed = True
-                elif e.key == pg.K_DOWN:
-                    minus_pressed = True
-                
                 # Пауза
                 elif e.key == pg.K_SPACE and not pause:
                     pause = True
@@ -94,7 +88,7 @@ def main():
                     pause = False
                     
             # Проверка нажатия на планеты
-            elif e.type == pg.MOUSEBUTTONDOWN:
+            elif e.type == pg.MOUSEBUTTONDOWN and e.button == 1:
                 click_coor = list(pg.mouse.get_pos())
 
                 for p in planets:
@@ -104,12 +98,21 @@ def main():
                     
                     if x <= click_coor[0] <= x + p.radius and y <= click_coor[1] <= y + p.radius:
                         index = planets.index(p)
+                        break
+                    else:
+                        index = -1
+            # Изменение масштаба  
+            elif e.type == pg.MOUSEWHEEL:
+                if e.y == 1:
+                    plus_pressed = True
+                elif e.y == -1:
+                    minus_pressed = True
         
         # Отрисовка
         for planet in planets:
             
             if plus_pressed and planet.SCALE_K <= 500:
-                planet.SCALE_K += 10
+                planet.SCALE_K += 15
                 planet.SCALE = planet.SCALE_K / planet.AU
                 if planet in planets[:5]:
                     planet.radius = int(planet.radius_k * planet.SCALE_K/5)
@@ -117,7 +120,7 @@ def main():
                     planet.radius = int(planet.radius_k * planet.SCALE_K*2)
                 
             elif minus_pressed and planet.SCALE_K >= 20:
-                planet.SCALE_K -= 10
+                planet.SCALE_K -= 15
                 planet.SCALE = planet.SCALE_K / planet.AU
                 if planet in planets[:5]:
                     planet.radius = int(planet.radius_k * planet.SCALE_K/5)
@@ -141,7 +144,8 @@ def main():
         minus_pressed = False
         
         # Отрисовка табло
-        table.draw(planets, index)
+        if index != -1:
+            table.draw(planets, index)
         
         # Отрисовка даты
         date_text = FONT_DATE.render(date(start_date), 1, colors['WHITE'])
