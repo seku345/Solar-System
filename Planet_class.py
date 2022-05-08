@@ -11,12 +11,11 @@ class Planet:
     AU = 149.6e6 * 1000 # Астрономическая единица
     G =  6.7428e-11 # Гравитационная постоянная
     SCALE_K = 300
-    SCALE = SCALE_K / AU # 1AU = 100 px
+    SCALE = SCALE_K / AU
     TIMESTEP = 3600 * 24 # 1 кадр = 1 день
 
     # Инициализация
     def __init__(self, name, x, y, radius, planet_image, color, mass, saturn= False):
-        super().__init__()
 
         self.name = name
         
@@ -84,9 +83,9 @@ class Planet:
             self.distance_to_sun = distance
         
         force = self.G * self.mass * other.mass / distance**2
-        theta = atan2(distance_y, distance_x)
-        force_x = cos(theta) * force
-        force_y = sin(theta) * force
+        alpha = atan2(distance_y, distance_x)
+        force_x = cos(alpha) * force
+        force_y = sin(alpha) * force
         return force_x, force_y
     
     # Расчет новых координат
