@@ -58,8 +58,8 @@ def main():
     plus_pressed = False
     minus_pressed = False
     index = 0
-    start_date = '10.03.1982'
-    pause = False
+    start_date = '9.03.1982'
+    pause = True
     
     # Основной цикл
     run = True
