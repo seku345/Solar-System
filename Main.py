@@ -19,35 +19,25 @@ def main():
     clock = pg.time.Clock()
     
     # Создание планет
-    sun = Planet(planets_info['Sun']['name'], 0, 0, 2.5, 'Sprites/Sun.png', colors['YELLOW'], planets_info['Sun']['mass'])
-    sun.sun = True
+    sun = Planet(planets_info['Sun']['name'], 0, 0, 2.5, 'Sprites/Sun.png', colors['YELLOW'], planets_info['Sun']['mass'], sun= True)
 
-    mercury = Planet(planets_info['Mercury']['name'], -0.387 * Planet.AU, 0, 0.5, 'Sprites/Mercury.png', colors['BROWN'], planets_info['Mercury']['mass'])
-    mercury.y_vel = planets_info['Mercury']['velocity']
+    mercury = Planet(planets_info['Mercury']['name'], -0.387 * Planet.AU, 0, 0.5, 'Sprites/Mercury.png', colors['BROWN'], planets_info['Mercury']['mass'], planets_info['Mercury']['velocity'])
 
-    venus = Planet(planets_info['Venus']['name'], -0.723 * Planet.AU, 0, 1, 'Sprites/Venus.png', colors['WHITE'], planets_info['Venus']['mass'])
-    venus.y_vel = -planets_info['Venus']['velocity']
+    venus = Planet(planets_info['Venus']['name'], -0.723 * Planet.AU, 0, 1, 'Sprites/Venus.png', colors['WHITE'], planets_info['Venus']['mass'], planets_info['Venus']['velocity'])
 
-    earth = Planet(planets_info['Earth']['name'], -1 * Planet.AU, 0, 1, 'Sprites/Earth.png', colors['BLUE'], planets_info['Earth']['mass'])
-    earth.y_vel = planets_info['Earth']['velocity']
+    earth = Planet(planets_info['Earth']['name'], -1 * Planet.AU, 0, 1, 'Sprites/Earth.png', colors['BLUE'], planets_info['Earth']['mass'], planets_info['Earth']['velocity'])
     
-    mars = Planet(planets_info['Mars']['name'], -1.524 * Planet.AU, 0, 1, 'Sprites/Mars.png', colors['RED'], planets_info['Mars']['mass'])
-    mars.y_vel = planets_info['Mars']['velocity']
+    mars = Planet(planets_info['Mars']['name'], -1.524 * Planet.AU, 0, 1, 'Sprites/Mars.png', colors['RED'], planets_info['Mars']['mass'], planets_info['Mars']['velocity'])
     
-    jupiter = Planet(planets_info['Jupiter']['name'], -5.2 * Planet.AU, 0, 1.75, 'Sprites/Jupiter.png', colors['BEIGE'], planets_info['Jupiter']['mass'])
-    jupiter.y_vel = planets_info['Jupiter']['velocity']
+    jupiter = Planet(planets_info['Jupiter']['name'], -5.2 * Planet.AU, 0, 1.75, 'Sprites/Jupiter.png', colors['BEIGE'], planets_info['Jupiter']['mass'], planets_info['Jupiter']['velocity'])
 
-    saturn = Planet(planets_info['Saturn']['name'], -9.54 * Planet.AU, 0, 1.5, 'Sprites/Saturn.png', colors['ORANGE'], planets_info['Saturn']['mass'], saturn= True)
-    saturn.y_vel = planets_info['Saturn']['velocity']
+    saturn = Planet(planets_info['Saturn']['name'], -9.54 * Planet.AU, 0, 1.5, 'Sprites/Saturn.png', colors['ORANGE'], planets_info['Saturn']['mass'], planets_info['Saturn']['velocity'], saturn= True)
     
-    uranus = Planet(planets_info['Uranus']['name'], -19.2 * Planet.AU, 0, 1.5, 'Sprites/Uranus.png', colors['ICE'], planets_info['Uranus']['mass'])
-    uranus.y_vel = -planets_info['Uranus']['velocity']
+    uranus = Planet(planets_info['Uranus']['name'], -19.2 * Planet.AU, 0, 1.5, 'Sprites/Uranus.png', colors['ICE'], planets_info['Uranus']['mass'], planets_info['Uranus']['velocity'])
 
-    neptune = Planet(planets_info['Neptune']['name'], -30 * Planet.AU, 0, 1.5, 'Sprites/Neptune.png', colors['LIGHT_BLUE'], planets_info['Neptune']['mass'])
-    neptune.y_vel = planets_info['Neptune']['velocity']
+    neptune = Planet(planets_info['Neptune']['name'], -30 * Planet.AU, 0, 1.5, 'Sprites/Neptune.png', colors['LIGHT_BLUE'], planets_info['Neptune']['mass'], planets_info['Neptune']['velocity'])
 
-    pluto = Planet(planets_info['Pluto']['name'], -39.53 * Planet.AU, 0, 1, 'Sprites/Pluto.png', colors['DARK_GREY'], planets_info['Pluto']['mass'])
-    pluto.y_vel = planets_info['Pluto']['velocity']
+    pluto = Planet(planets_info['Pluto']['name'], -39.53 * Planet.AU, 0, 1, 'Sprites/Pluto.png', colors['DARK_GREY'], planets_info['Pluto']['mass'], planets_info['Pluto']['velocity'])
     
     planets = [sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto]
     
@@ -103,9 +93,9 @@ def main():
                         index = -1
             # Изменение масштаба  
             elif e.type == pg.MOUSEWHEEL:
-                if e.y == 1:
+                if e.y >= 1:
                     plus_pressed = True
-                elif e.y == -1:
+                elif e.y <= -1:
                     minus_pressed = True
         
         # Отрисовка

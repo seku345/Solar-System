@@ -1,5 +1,6 @@
 # Библиотеки
 from math import sqrt, atan2, cos, sin, pi
+import time
 
 import pygame as pg
 
@@ -15,7 +16,7 @@ class Planet:
     TIMESTEP = 3600 * 24 # 1 кадр = 1 день
 
     # Инициализация
-    def __init__(self, name, x, y, radius, planet_image, color, mass, saturn= False):
+    def __init__(self, name, x, y, radius, planet_image, color, mass, velocity= 0, saturn= False, sun= False):
 
         self.name = name
         
@@ -32,13 +33,18 @@ class Planet:
         self.color = color
 
         self.x_vel = 0
-        self.y_vel = 0
+        self.y_vel = velocity
 
         self.distance_to_sun = 0
         self.orbit = []
         
-        self.sun = False
+        self.sun = sun
         self.saturn = saturn
+        
+        self.period = 0
+        self.start_time = time.time()
+        
+        self.start_x = -x
         
     # Отрисовка
     def draw(self):
@@ -47,20 +53,15 @@ class Planet:
         y = self.y * self.SCALE + V/2 - self.radius/2
         
         # Орбита
-        if len(self.orbit) > 2:
-            updated_points = []
+        if len(self.orbit) > 2: 
             for point in self.orbit:
                 x, y = point
                 x = x * self.SCALE + H / 2
                 y = y * self.SCALE + V / 2
-                updated_points.append((x, y))
-            
 
-            pg.draw.lines(window, self.color, False, updated_points, 2)
+        if not self.sun:
+            pg.draw.circle(window, self.color, (H/2, V/2), (self.start_x * self.SCALE), width= 2)
             
-            if len(self.orbit) > 2 * pi * self.distance_to_sun:
-                del self.orbit[0]
-        
         # Планета
         if not self.sun:
             window.blit(self.image, (int(x - self.radius/2), int(y - self.radius/2)))
