@@ -102,7 +102,7 @@ def main():
         for planet in planets:
             
             if plus_pressed and planet.SCALE_K <= 500:
-                planet.SCALE_K += 15
+                planet.SCALE_K += 10
                 planet.SCALE = planet.SCALE_K / planet.AU
                 if planet in planets[:5]:
                     planet.radius = int(planet.radius_k * planet.SCALE_K/5)
@@ -110,7 +110,7 @@ def main():
                     planet.radius = int(planet.radius_k * planet.SCALE_K*2)
                 
             elif minus_pressed and planet.SCALE_K >= 20:
-                planet.SCALE_K -= 15
+                planet.SCALE_K -= 10
                 planet.SCALE = planet.SCALE_K / planet.AU
                 if planet in planets[:5]:
                     planet.radius = int(planet.radius_k * planet.SCALE_K/5)
